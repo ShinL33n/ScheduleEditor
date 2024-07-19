@@ -1,0 +1,103 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
+
+<PageTitle>View Your Schedule</PageTitle>
+
+<label id="dark-mode-switch" class="@DarkModeCssClass">
+    <input type="checkbox" class="@DarkModeCssClass" @onclick="ToggleDarkMode">
+    <span class="slider round @DarkModeCssClass"></span>
+</label>
+
+<div class="page @DarkModeCssClass">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Poniedziałek</th>
+                <th>Wtorek</th>
+                <th>Środa</th>
+                <th>Czwartek</th>
+                <th>Piątek</th>
+                <th>Sobota</th>
+                <th>Niedziela</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                int hourDisplay = 6;
+                foreach (var chunk in GetCellId(16, 8).Chunk(8))
+                {
+                    <tr>
+                        @foreach (string id in chunk)
+                        {
+                            <td id="@id" @onclick="@((args) => ModifyCell(id.ToString()))">
+                                @if (id.ToString().EndsWith("0"))
+                                {
+                                    <span>@hourDisplay:00</span>
+                                    hourDisplay++;
+                                }
+                                else
+                                {
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">.</button>
+                                    <ManageEvent Id="@id" />
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+
+    private async Task ModifyCell(string id)
+    {
+        await JSRuntime.InvokeVoidAsync("AddEventCellView", id);
+
+
+        Console.WriteLine(id);
+    }
+
+    static IEnumerable<string> GetCellId(int numberOfRows, int numerOfColumns)
+    {
+        for (int i = 0; i < numberOfRows; i++)
+        {
+            for (int j = 0; j < numerOfColumns; j++)
+
+                yield return ("tr" + i + "-td" + j);
+        }
+    }
+
+    private string GetCellIdHash(string id) => $"#{ManageEvent.GetCellId(id)}";
+
+
+
+    //DARK MODE
+    private readonly string keyDarkMode = "DarkMode";
+
+    private bool darkModeToggled = false;
+    private string? DarkModeCssClass => darkModeToggled ? "dark-mode" : null;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            string darkModeSateFromLocalStorage = await JSRuntime.InvokeAsync<string>("readLocalStorage", keyDarkMode);
+            darkModeToggled = !string.IsNullOrEmpty(darkModeSateFromLocalStorage) && darkModeSateFromLocalStorage == "true" ? true : false;
+        }
+
+        StateHasChanged();
+    }
+
+    private async void ToggleDarkMode()
+    {
+        darkModeToggled = !darkModeToggled;
+        await JSRuntime.InvokeVoidAsync("addToLocalStorage", keyDarkMode, darkModeToggled);
+    }
+    ///////////
+}

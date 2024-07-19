@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ScheduleEditor.Frontend.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ScheduleEditor.Frontend.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ScheduleEditor.Frontend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ScheduleEditor.Frontend.props",
+      "PackagePath": "build\\ScheduleEditor.Frontend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ScheduleEditor.Frontend.props",
+      "PackagePath": "buildMultiTargeting\\ScheduleEditor.Frontend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ScheduleEditor.Frontend.props",
+      "PackagePath": "buildTransitive\\ScheduleEditor.Frontend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

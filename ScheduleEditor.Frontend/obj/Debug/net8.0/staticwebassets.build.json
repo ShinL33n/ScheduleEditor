@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "4BDbyefL3xdxxYhqUq9kFkNdcAuqpW3oPVTbysDyDow=",
+  "Source": "ScheduleEditor.Frontend",
+  "BasePath": "_content/ScheduleEditor.Frontend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ScheduleEditor.Frontend\\wwwroot",
+      "Source": "ScheduleEditor.Frontend",
+      "ContentRoot": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\wwwroot\\",
+      "BasePath": "_content/ScheduleEditor.Frontend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ScheduleEditor.Frontend.styles.css",
+      "SourceId": "ScheduleEditor.Frontend",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/ScheduleEditor.Frontend",
+      "RelativePath": "ScheduleEditor.Frontend.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ScheduleEditor.Frontend.styles.css"
+    },
+    {
+      "Identity": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ScheduleEditor.Frontend.bundle.scp.css",
+      "SourceId": "ScheduleEditor.Frontend",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "BasePath": "_content/ScheduleEditor.Frontend",
+      "RelativePath": "ScheduleEditor.Frontend.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ScheduleEditor.Frontend.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\wwwroot\\app.css",
+      "SourceId": "ScheduleEditor.Frontend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\wwwroot\\",
+      "BasePath": "_content/ScheduleEditor.Frontend",
+      "RelativePath": "app.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\app.css"
+    }
+  ]
+}
