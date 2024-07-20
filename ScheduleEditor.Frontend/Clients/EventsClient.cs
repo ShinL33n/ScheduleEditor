@@ -6,8 +6,8 @@ namespace ScheduleEditor.Frontend.Clients
     public class EventsClient
     {
         private List<ScheduleEvent> _events = new();
-        public ScheduleEvent[] GetAllEvents()
-            => [.. _events];
+        public List<ScheduleEvent> GetAllEvents()
+            => _events;
 
         public ScheduleEvent? GetEvent(string id) 
             => GetEventById(id);

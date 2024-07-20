@@ -27,3 +27,4 @@ d:\Dokumenty\Programming projects\C#\Schedule\ScheduleEditor.Frontend\obj\Debug\
 d:\Dokumenty\Programming projects\C#\Schedule\ScheduleEditor.Frontend\obj\Debug\net8.0\ScheduleEditor.Frontend.genruntimeconfig.cache
 d:\Dokumenty\Programming projects\C#\Schedule\ScheduleEditor.Frontend\obj\Debug\net8.0\ref\ScheduleEditor.Frontend.dll
 D:\Dokumenty\Programming projects\C#\Schedule\ScheduleEditor.Frontend\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
+D:\Dokumenty\Programming projects\C#\Schedule\ScheduleEditor.Frontend\obj\Debug\net8.0\ScheduleEditor.Frontend.sourcelink.json

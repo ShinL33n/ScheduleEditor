@@ -1,6 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
+@inject EventsClient EventsClient
 
 <PageTitle>View Your Schedule</PageTitle>
 
@@ -42,6 +43,24 @@
                                 {
                                     <button class="btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">.</button>
                                     <ManageEvent Id="@id" />
+
+                                    if (_scheduleEvent is not null)
+                                    {
+                                        ScheduleEvent? scheduleEvent = _scheduleEvent.Find((scheduleEvent) => scheduleEvent.Id == @id)!;
+
+                                        if (scheduleEvent is not null)
+                                        {
+                                            <h4>@scheduleEvent.Room</h4>
+                                            <h5>[@scheduleEvent.Type.ToString()]</h5>
+                                            <h3>@scheduleEvent.Name</h3>
+                                            <h6>@scheduleEvent.Lecturer</h6>
+                                            if(scheduleEvent.AdditionalInformation is not null)
+                                            {
+                                                <h4><i>@scheduleEvent.AdditionalInformation</i> </h4>
+                                            }
+
+                                        }
+                                    }
                                 }
                             </td>
                         }
@@ -53,6 +72,12 @@
 </div>
 
 @code {
+    private List<ScheduleEvent>? _scheduleEvent;
+
+    protected override void OnInitialized()
+    {
+        _scheduleEvent = EventsClient.GetAllEvents();
+    }
 
     private async Task ModifyCell(string id)
     {

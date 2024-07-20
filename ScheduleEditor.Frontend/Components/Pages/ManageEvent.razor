@@ -1,72 +1,72 @@
 ﻿@rendermode InteractiveServer
 @inject EventsClient EventsClient
+@attribute [StreamRendering]
 
 @if (ScheduleEventViewModel is null || Id is null)
 {
     <h1>Loading...</h1>
 }
-else{
+else
+{
+    <div class="modal" id="@GetCellId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">@title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-    <div class="modal fade" id="@GetCellId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">@title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+                <div class="modal-body">
+                    <EditForm Model="ScheduleEventViewModel"
+                              FormName="ManageEvent"
+                              OnValidSubmit="HandleSubmit"
+                              Enhance>
+                        <div class="form-group">
+                            <label for="room">Room:</label>
+                            <InputText id="room" @bind-Value="ScheduleEventViewModel.Room" class="form-control" placeholder="Enter room number" />
+                        </div>
 
-            <div class="modal-body">
-                <EditForm 
-                    Model="ScheduleEventViewModel"
-                    FormName="ManageEvent"
-                    OnValidSubmit="HandleSubmit"
-                    Enhance>
-                    <div class="form-group">
-                        <label for="room">Room:</label>
-                        <InputText id="room" @bind-Value="ScheduleEventViewModel.Room" class="form-control" placeholder="Enter room number" />
-                    </div>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <InputText id="name" @bind-Value="ScheduleEventViewModel.Name" class="form-control" placeholder="Enter class name" />
+                        </div>
 
-                    <div class="form-group">
-                         <label for="name">Name:</label>
-                         <InputText id="name" @bind-Value="ScheduleEventViewModel.Name" class="form-control" placeholder="Enter class name" />
-                     </div>
-
-                     <div class="form-group">
-                          <label for="classType">Type:</label>
-                          <InputRadioGroup @bind-Value="ScheduleEventViewModel.Type" id="classType">
+                        <div class="form-group">
+                            <label for="classType">Type:</label>
+                            <InputRadioGroup @bind-Value="ScheduleEventViewModel.Type" id="classType">
                                 @foreach (var type in Enum.GetValues<ScheduleEvent.ClassType>())
                                 {
                                     <InputRadio Value="type" />
                                     @type
                                 }
-                          </InputRadioGroup>
-                     </div>
+                            </InputRadioGroup>
+                        </div>
 
-                     <div class="form-group">
-                          <label for="lecturer">Lecturer:</label>
+                        <div class="form-group">
+                            <label for="lecturer">Lecturer:</label>
                             <InputText id="lecturer" @bind-Value="ScheduleEventViewModel.Lecturer" class="form-control" placeholder="Enter lecturer name" />
-                     </div>
+                        </div>
 
-                     <div class="form-group">
+                        <div class="form-group">
                             <label for="additionalInformation">Additional Information:</label>
                             <InputText id="additionalInformation" @bind-Value="ScheduleEventViewModel.AdditionalInformation" class="form-control" placeholder="Enter additional information" />
-                     </div>
+                        </div>
 
-                     <div class="form-group">
+                        <div class="form-group">
                             <label for="addtionalEvents">Addtional Events?</label>
                             <InputCheckbox id="addtionalEvents" @bind-Value="ScheduleEventViewModel.AddtionalEvents" class="form-control" />
-                     </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                </EditForm>
+                    </EditForm>
+                </div>
             </div>
         </div>
     </div>
-</div>
 }
 
 @code {
@@ -85,6 +85,7 @@ else{
 
     public static string GetCellId(string id) => $"modal-{id}";
 
+
     protected override void OnParametersSet()
     {
         if (Id is not null)
@@ -92,7 +93,7 @@ else{
             scheduleEvent = EventsClient.GetEvent(Id);
 
             if (scheduleEvent is null)  // -> If we're adding new event
-            { 
+            {
                 title = "Add Event";
                 ScheduleEventViewModel = new()
                     {
@@ -108,20 +109,24 @@ else{
                 ScheduleEventViewModel = EventsClient.GetEvent(Id);
             }
         }
-
     }
+
+    // protected override void OnInitialized()
+    // {
+    //     title = (scheduleEvent is null) ? "Add Event" : $"Edit {scheduleEvent.Name}";
+    // }
 
     private void HandleSubmit()
     {
         if (scheduleEvent is null)
         {
             EventsClient.AddEvent(ScheduleEventViewModel!);
+            title = $"Edit {ScheduleEventViewModel!.Name}";
         }
         else
         {
             EventsClient.UpdateEvent(ScheduleEventViewModel!);
         }
-
     }
 
 }

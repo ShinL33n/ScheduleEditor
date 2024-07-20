@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|solutionrelative:scheduleeditor.frontend\\components\\pages\\manageevent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|d:\\dokumenty\\programming projects\\c#\\schedule\\scheduleeditor.frontend\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|solutionrelative:scheduleeditor.frontend\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|d:\\dokumenty\\programming projects\\c#\\schedule\\scheduleeditor.frontend\\clients\\eventsclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|solutionrelative:scheduleeditor.frontend\\clients\\eventsclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|d:\\dokumenty\\programming projects\\c#\\schedule\\scheduleeditor.frontend\\models\\scheduleevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|solutionrelative:scheduleeditor.frontend\\models\\scheduleevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|d:\\dokumenty\\programming projects\\c#\\schedule\\scheduleeditor.frontend\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|solutionrelative:scheduleeditor.frontend\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A67627B-13BD-4A67-A042-4967C851C702}|ScheduleEditor.Frontend\\ScheduleEditor.Frontend.csproj|d:\\dokumenty\\programming projects\\c#\\schedule\\scheduleeditor.frontend\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -54,8 +54,7 @@
               "RelativeToolTip": "ScheduleEditor.Frontend\\Components\\App.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABpAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T17:35:19.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-19T17:35:19.334Z"
             },
             {
               "$type": "Document",
@@ -67,12 +66,11 @@
               "RelativeToolTip": "ScheduleEditor.Frontend\\Models\\ScheduleEventViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T16:53:59.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-19T16:53:59.104Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ScheduleEvent.cs",
               "DocumentMoniker": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Models\\ScheduleEvent.cs",
               "RelativeDocumentMoniker": "ScheduleEditor.Frontend\\Models\\ScheduleEvent.cs",
@@ -85,26 +83,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "EventsClient.cs",
               "DocumentMoniker": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Clients\\EventsClient.cs",
               "RelativeDocumentMoniker": "ScheduleEditor.Frontend\\Clients\\EventsClient.cs",
               "ToolTip": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Clients\\EventsClient.cs",
               "RelativeToolTip": "ScheduleEditor.Frontend\\Clients\\EventsClient.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T15:31:24.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Home.razor",
               "DocumentMoniker": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "ScheduleEditor.Frontend\\Components\\Pages\\Home.razor",
               "ToolTip": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Components\\Pages\\Home.razor",
               "RelativeToolTip": "ScheduleEditor.Frontend\\Components\\Pages\\Home.razor",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACoAAABaAAAA",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAuwDEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2021-10-10T06:58:46.214Z",
               "EditorCaption": ""
@@ -117,7 +115,7 @@
               "RelativeDocumentMoniker": "ScheduleEditor.Frontend\\Components\\Pages\\ManageEvent.razor",
               "ToolTip": "D:\\Dokumenty\\Programming projects\\C#\\Schedule\\ScheduleEditor.Frontend\\Components\\Pages\\ManageEvent.razor",
               "RelativeToolTip": "ScheduleEditor.Frontend\\Components\\Pages\\ManageEvent.razor",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAhwGEAAAAVAAAA",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAHsAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2020-05-21T15:29:23.107Z",
               "EditorCaption": ""
@@ -138,8 +136,7 @@
               "RelativeToolTip": "ScheduleEditor.Frontend\\wwwroot\\app.css",
               "ViewState": "AQIAADAAAAAAAAAAAAAAAEsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-07-19T13:52:59.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-19T13:52:59.566Z"
             },
             {
               "$type": "Document",
