@@ -12,6 +12,7 @@ table, th, td {
 th, td {
     min-width: 150px;
     text-align: center;
+    height: 100%;
 }
 
 tr > :first-child {
@@ -24,23 +25,9 @@ tbody > tr {
     height: var(--tr-height);
 }
 
-thead > tr{
+thead > tr {
     height: 50px;
 }
-
-tbody td:empty:hover:before {
-    content: '➕';
-    position: relative;
-    background-color: var(--fill-color);
-    padding: .5em 1.7em;
-    top: -1.5px;
-    border-radius: 5px;
-    color: #ffffff56;
-    font-size: 1.2em;
-    font-weight: 600;
-    cursor: pointer;
-}
-
 
 .page {
     height: fit-content;
@@ -54,6 +41,7 @@ tbody td:empty:hover:before {
     background-color: var(--bg-color);
 }
 
+/*===========dark mode switch============*/
 #dark-mode-switch {
     position: fixed;
     display: inline-block;
@@ -107,5 +95,61 @@ tbody td:empty:hover:before {
     .slider.round:before {
         border-radius: 50%;
     }
+/*========================================*/
+
+.add-event-btn {
+    position: relative;
+    padding: 0.3em;
+    width: 100%;
+    height: 100%;
+} 
+
+    .add-event-btn:hover {
+        cursor: pointer;
+    }
+
+        .add-event-btn:empty:hover:before {
+            content: '➕';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0.25em;
+            color: #ffffff86;
+            font-size: 1.2em;
+            background-color: var(--fill-color);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 
+.event {
+    position: relative;
+    background-color: var(--event-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 250px;
+}
+
+
+    .event:hover:before {
+        content: '📝';
+        background-color: #0000003f;
+        color: #ffffff86;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }

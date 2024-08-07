@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScheduleEditor.Frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9e006c3bd42d98dfa70b4df31728427009cd647")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f5a483d7d15d2f6dfdfb456812d8729e62d31d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScheduleEditor.Frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScheduleEditor.Frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

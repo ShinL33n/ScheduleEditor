@@ -33,7 +33,7 @@
                     <tr>
                         @foreach (string id in chunk)
                         {
-                            <td id="@id" @onclick="@((args) => ModifyCell(id.ToString()))">
+                            <td id="@id"  @onclick="@((args) => ModifyCell(id.ToString()))">
                                 @if (id.ToString().EndsWith("0"))
                                 {
                                     <span>@hourDisplay:00</span>
@@ -41,26 +41,33 @@
                                 }
                                 else
                                 {
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">.</button>
                                     <ManageEvent Id="@id" />
 
-                                    if (_scheduleEvent is not null)
-                                    {
-                                        ScheduleEvent? scheduleEvent = _scheduleEvent.Find((scheduleEvent) => scheduleEvent.Id == @id)!;
+                                    <div class="add-event-btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">
 
-                                        if (scheduleEvent is not null)
+                                        @if (_scheduleEvent is not null)
                                         {
-                                            <h4>@scheduleEvent.Room</h4>
-                                            <h5>[@scheduleEvent.Type.ToString()]</h5>
-                                            <h3>@scheduleEvent.Name</h3>
-                                            <h6>@scheduleEvent.Lecturer</h6>
-                                            if(scheduleEvent.AdditionalInformation is not null)
-                                            {
-                                                <h4><i>@scheduleEvent.AdditionalInformation</i> </h4>
-                                            }
+                                            ScheduleEvent? scheduleEvent = _scheduleEvent.Find((scheduleEvent) => scheduleEvent.Id == @id)!;
 
+                                            if (scheduleEvent is not null)
+                                            {
+                                                // BUG WHEN USER CANCELS ADDING EVENT; when user cancels adding new event and when come back for adding new event in the same cell there are informations that should have been canceled and deleted when exiting event addition
+                                                // ADD DATA VALIDATION
+                                                // ADD COLOR VARIATION & RANDOMIZATION FOR .event 
+                                                <div class="event">
+                                                    <h4>@scheduleEvent.Room</h4>
+                                                    <h5>[@scheduleEvent.Type.ToString()]</h5>
+                                                    <h3>@scheduleEvent.Name</h3>
+                                                    <h6>@scheduleEvent.Lecturer</h6>
+                                                    @if (scheduleEvent.AdditionalInformation is not null)
+                                                    {
+                                                        <h4><i>@scheduleEvent.AdditionalInformation</i> </h4>
+                                                    }
+                                                </div>
+                                            }
                                         }
-                                    }
+
+                                    </div>
                                 }
                             </td>
                         }

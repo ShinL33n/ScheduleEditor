@@ -19,12 +19,20 @@
         function addToLocalStorage(key, value) { localStorage[key] = value; }
         function readLocalStorage(key) { return localStorage[key]; }
         function AddEventCellView(id) {
-            if (document.getElementById(id).childElementCount == 0) {
-                var eventCell = document.createElement("div");
-                eventCell.classList.add("event");
+            // if (document.getElementById(id).childElementCount == 0) {
+            //     var eventCell = document.createElement("div");
+            //     eventCell.classList.add("event");
 
-                document.getElementById(id).appendChild(eventCell);
-            }
+            //     document.getElementById(id).appendChild(eventCell);
+            // }
+            var id_modal = "modal-"+id;
+            console.log(id_modal);
+            var modal = document.getElementById(id_modal);
+
+            // Prevent click event propagation inside modal
+            modal.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
         }
     </script>
 </body>

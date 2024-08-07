@@ -1,0 +1,13 @@
+.classTypeElement[b-qxd7j6axi8] {
+    position: relative;
+    display: inline-block;
+    margin: 0.2em 0.6em;
+    padding: 0 0.6em;
+    border-radius: 5px;
+    background-color: var(--fill-color);
+}
+    .classTypeElement:hover[b-qxd7j6axi8], label:hover[b-qxd7j6axi8] {
+        cursor: pointer;
+    }
+
+

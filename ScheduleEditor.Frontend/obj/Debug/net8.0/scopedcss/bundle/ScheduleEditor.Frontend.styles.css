@@ -32,6 +32,7 @@ table[b-w0ec89y6rt], th[b-w0ec89y6rt], td[b-w0ec89y6rt] {
 th[b-w0ec89y6rt], td[b-w0ec89y6rt] {
     min-width: 150px;
     text-align: center;
+    height: 100%;
 }
 
 tr > :first-child[b-w0ec89y6rt] {
@@ -44,23 +45,9 @@ tbody > tr[b-w0ec89y6rt] {
     height: var(--tr-height);
 }
 
-thead > tr[b-w0ec89y6rt]{
+thead > tr[b-w0ec89y6rt] {
     height: 50px;
 }
-
-tbody td:empty:hover[b-w0ec89y6rt]:before {
-    content: '➕';
-    position: relative;
-    background-color: var(--fill-color);
-    padding: .5em 1.7em;
-    top: -1.5px;
-    border-radius: 5px;
-    color: #ffffff56;
-    font-size: 1.2em;
-    font-weight: 600;
-    cursor: pointer;
-}
-
 
 .page[b-w0ec89y6rt] {
     height: fit-content;
@@ -74,6 +61,7 @@ tbody td:empty:hover[b-w0ec89y6rt]:before {
     background-color: var(--bg-color);
 }
 
+/*===========dark mode switch============*/
 #dark-mode-switch[b-w0ec89y6rt] {
     position: fixed;
     display: inline-block;
@@ -126,6 +114,76 @@ tbody td:empty:hover[b-w0ec89y6rt]:before {
 
     .slider.round[b-w0ec89y6rt]:before {
         border-radius: 50%;
+    }
+/*========================================*/
+
+.add-event-btn[b-w0ec89y6rt] {
+    position: relative;
+    padding: 0.3em;
+    width: 100%;
+    height: 100%;
+} 
+
+    .add-event-btn:hover[b-w0ec89y6rt] {
+        cursor: pointer;
+    }
+
+        .add-event-btn:empty:hover[b-w0ec89y6rt]:before {
+            content: '➕';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0.25em;
+            color: #ffffff86;
+            font-size: 1.2em;
+            background-color: var(--fill-color);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+.event[b-w0ec89y6rt] {
+    position: relative;
+    background-color: var(--event-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 250px;
+}
+
+
+    .event:hover[b-w0ec89y6rt]:before {
+        content: '📝';
+        background-color: #0000003f;
+        color: #ffffff86;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+/* _content/ScheduleEditor.Frontend/Components/Pages/ManageEvent.razor.rz.scp.css */
+.classTypeElement[b-qxd7j6axi8] {
+    position: relative;
+    display: inline-block;
+    margin: 0.2em 0.6em;
+    padding: 0 0.6em;
+    border-radius: 5px;
+    background-color: var(--fill-color);
+}
+    .classTypeElement:hover[b-qxd7j6axi8], label:hover[b-qxd7j6axi8] {
+        cursor: pointer;
     }
 
 

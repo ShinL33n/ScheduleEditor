@@ -13,7 +13,7 @@ else
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">@title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -38,8 +38,11 @@ else
                             <InputRadioGroup @bind-Value="ScheduleEventViewModel.Type" id="classType">
                                 @foreach (var type in Enum.GetValues<ScheduleEvent.ClassType>())
                                 {
-                                    <InputRadio Value="type" />
-                                    @type
+                                    string id = $"{Id.ToString()}-{@type.ToString().ToLower()}";
+                                    <div class="classTypeElement">
+                                        <InputRadio Value="type" id="@id" />
+                                        <label for="@id">@type</label>
+                                    </div>
                                 }
                             </InputRadioGroup>
                         </div>
@@ -59,8 +62,8 @@ else
                             <InputCheckbox id="addtionalEvents" @bind-Value="ScheduleEventViewModel.AddtionalEvents" class="form-control" />
                         </div>
 
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </EditForm>
                 </div>

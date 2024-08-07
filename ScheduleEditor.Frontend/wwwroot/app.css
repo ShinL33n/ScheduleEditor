@@ -62,14 +62,12 @@ body {
     justify-content: center;
 }
 
-.event {
+
+input[type=radio] {
     position: relative;
-    height: calc(var(--tr-height) - 7px);
-    margin: 0 3px;
-    background-color: var(--event-color);
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: -3px;
 }
 
+    input[type=radio]:hover{
+        cursor: pointer;
+    }
