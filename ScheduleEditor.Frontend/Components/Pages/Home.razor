@@ -41,7 +41,7 @@
                                 }
                                 else
                                 {
-                                    <ManageEvent Id="@id" />
+                                    <ManageEvent Id="@id" DarkModeCssClass="@DarkModeCssClass" />
 
                                     <div class="add-event-btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">
 
@@ -52,8 +52,10 @@
                                             if (scheduleEvent is not null)
                                             {
                                                 // BUG WHEN USER CANCELS ADDING EVENT; when user cancels adding new event and when come back for adding new event in the same cell there are informations that should have been canceled and deleted when exiting event addition
+                                                // data-bs-dismiss="modal" AND VALIDATION BUG
                                                 // ADD DATA VALIDATION
                                                 // ADD COLOR VARIATION & RANDOMIZATION FOR .event 
+                                                // ADD DELTE BUTTON
                                                 <div class="event">
                                                     <h4>@scheduleEvent.Room</h4>
                                                     <h5>[@scheduleEvent.Type.ToString()]</h5>
@@ -112,7 +114,7 @@
     private readonly string keyDarkMode = "DarkMode";
 
     private bool darkModeToggled = false;
-    private string? DarkModeCssClass => darkModeToggled ? "dark-mode" : null;
+    private string DarkModeCssClass => darkModeToggled ? "dark-mode" : string.Empty;
 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

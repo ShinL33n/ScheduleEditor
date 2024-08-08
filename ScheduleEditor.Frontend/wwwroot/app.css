@@ -41,6 +41,8 @@ h1:focus {
     --bg-color: #7e7e7e21;
     --event-color: #c6dfe6;
     --tr-height: 75px;
+    --btn-primary-color: #3dc0e5;
+    --btn-secondary-color: #527984;
 }
 
 .dark-mode {
@@ -50,6 +52,7 @@ h1:focus {
     --fill-solid-color: #2f2f2f;
     --bg-color: #2f2f2f;
     --event-color: #524548;
+    --btn-primary-color: #513239;
 }
 
 html, body {
@@ -71,3 +74,7 @@ input[type=radio] {
     input[type=radio]:hover{
         cursor: pointer;
     }
+
+input:not(textarea).form-control {
+    width: 87%;
+}

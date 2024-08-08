@@ -1,21 +1,20 @@
 ﻿@rendermode InteractiveServer
 @inject EventsClient EventsClient
+@inject IJSRuntime JSRuntime
 @attribute [StreamRendering]
 
-@if (ScheduleEventViewModel is null || Id is null)
+@if (ScheduleEventViewModel is null || Id is null || DarkModeCssClass is null)
 {
-    <h1>Loading...</h1>
+    <i class="loading"></i>
 }
 else
 {
-    <div class="modal" id="@GetCellId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal @DarkModeCssClass" id="@GetCellId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">@title</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close @DarkModeCssClass" data-bs-dismiss="modal" aria-label="Close" />
                 </div>
 
                 <div class="modal-body">
@@ -23,18 +22,22 @@ else
                               FormName="ManageEvent"
                               OnValidSubmit="HandleSubmit"
                               Enhance>
+                        <DataAnnotationsValidator />
+
                         <div class="form-group">
                             <label for="room">Room:</label>
                             <InputText id="room" @bind-Value="ScheduleEventViewModel.Room" class="form-control" placeholder="Enter room number" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Room" />
                         </div>
 
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <InputText id="name" @bind-Value="ScheduleEventViewModel.Name" class="form-control" placeholder="Enter class name" />
+                            <InputText id="name" @bind-Value="ScheduleEventViewModel.Name" class="form-control" placeholder="Enter event name" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Name" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="classType">Type:</label>
+                        <div class="form-group type-group">
+                            <label id="classType-label" for="classType">Type:</label>
                             <InputRadioGroup @bind-Value="ScheduleEventViewModel.Type" id="classType">
                                 @foreach (var type in Enum.GetValues<ScheduleEvent.ClassType>())
                                 {
@@ -50,20 +53,24 @@ else
                         <div class="form-group">
                             <label for="lecturer">Lecturer:</label>
                             <InputText id="lecturer" @bind-Value="ScheduleEventViewModel.Lecturer" class="form-control" placeholder="Enter lecturer name" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Lecturer" />
                         </div>
 
                         <div class="form-group">
                             <label for="additionalInformation">Additional Information:</label>
-                            <InputText id="additionalInformation" @bind-Value="ScheduleEventViewModel.AdditionalInformation" class="form-control" placeholder="Enter additional information" />
+                            <InputTextArea id="additionalInformation" @bind-Value="ScheduleEventViewModel.AdditionalInformation" class="form-control" placeholder="Enter additional information" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.AdditionalInformation" />
                         </div>
 
                         <div class="form-group">
-                            <label for="addtionalEvents">Addtional Events?</label>
-                            <InputCheckbox id="addtionalEvents" @bind-Value="ScheduleEventViewModel.AddtionalEvents" class="form-control" />
+                            <label class="btn btn-outline-primary" for="addtionalEvents" title="Option comming soon!"> <span class="clr-secondary">⤹</span> More Events at This Time? <span class="clr-secondary">⤸</span></label>
+                            <InputCheckbox disabled id="addtionalEvents" class="btn-check form-control" @bind-Value="ScheduleEventViewModel.AddtionalEvents" />
                         </div>
 
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class="submit-group">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
 
                     </EditForm>
                 </div>
@@ -76,10 +83,12 @@ else
     [Parameter]
     public string? Id { get; set; }
 
+    [Parameter]
+    public string DarkModeCssClass { get; set; } = string.Empty;
+
     [SupplyParameterFromForm]
     //public ScheduleEventViewModel? ScheduleEventViewModel { get; set; }
     public ScheduleEvent? ScheduleEventViewModel { get; set; }
-
 
     private ScheduleEvent? scheduleEvent = null;
 
@@ -116,7 +125,8 @@ else
 
     // protected override void OnInitialized()
     // {
-    //     title = (scheduleEvent is null) ? "Add Event" : $"Edit {scheduleEvent.Name}";
+    //     if (ScheduleEventViewModel is not null)
+    //         editContext = new EditContext(ScheduleEventViewModel);
     // }
 
     private void HandleSubmit()
@@ -130,6 +140,12 @@ else
         {
             EventsClient.UpdateEvent(ScheduleEventViewModel!);
         }
+
+
+        //string modalId = $"#modal-{ManageEvent.GetCellId(Id!)}";
+
+        //await JSRuntime.InvokeVoidAsync("bootstrap.Modal.getOrCreateInstance", modalId);
+        //await JSRuntime.InvokeVoidAsync("hide");
     }
 
 }
