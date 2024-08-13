@@ -43,7 +43,7 @@
                                 {
                                     <ManageEvent Id="@id" DarkModeCssClass="@DarkModeCssClass" />
 
-                                    <div class="add-event-btn" data-bs-toggle="modal" data-bs-target="@GetCellIdHash(id)">
+                                    <div class="add-event-btn" data-bs-toggle="modal" data-bs-target="@GetModalIdHash(id)">
 
                                         @if (_scheduleEvent is not null)
                                         {
@@ -52,10 +52,10 @@
                                             if (scheduleEvent is not null)
                                             {
                                                 // BUG WHEN USER CANCELS ADDING EVENT; when user cancels adding new event and when come back for adding new event in the same cell there are informations that should have been canceled and deleted when exiting event addition
-                                                // data-bs-dismiss="modal" AND VALIDATION BUG
-                                                // ADD DATA VALIDATION
+                                                // BUG WHEN EDITING EVENT AND CLOSING MODAL; when user edits event he can even clean all fields without validation errors
                                                 // ADD COLOR VARIATION & RANDOMIZATION FOR .event 
                                                 // ADD DELTE BUTTON
+                                                // maybe update SetModelNull into better "edit mode detection"
                                                 <div class="event">
                                                     <h4>@scheduleEvent.Room</h4>
                                                     <h5>[@scheduleEvent.Type.ToString()]</h5>
@@ -90,7 +90,8 @@
 
     private async Task ModifyCell(string id)
     {
-        await JSRuntime.InvokeVoidAsync("AddEventCellView", id);
+        //useless(?)
+       //await JSRuntime.InvokeVoidAsync("stopClickEventModalPropagation", id);
 
 
         Console.WriteLine(id);
@@ -106,7 +107,7 @@
         }
     }
 
-    private string GetCellIdHash(string id) => $"#{ManageEvent.GetCellId(id)}";
+    private string GetModalIdHash(string id) => $"#{ManageEvent.GetModalId(id)}";
 
 
 

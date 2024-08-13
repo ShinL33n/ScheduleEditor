@@ -18,21 +18,20 @@
     <script>
         function addToLocalStorage(key, value) { localStorage[key] = value; }
         function readLocalStorage(key) { return localStorage[key]; }
-        function AddEventCellView(id) {
-            // if (document.getElementById(id).childElementCount == 0) {
-            //     var eventCell = document.createElement("div");
-            //     eventCell.classList.add("event");
+        // function stopClickEventModalPropagation(id) {
 
-            //     document.getElementById(id).appendChild(eventCell);
-            // }
-            var id_modal = "modal-"+id;
-            console.log(id_modal);
-            var modal = document.getElementById(id_modal);
+        //     var id_modal = "modal-"+id;
+        //     console.log(id_modal);
+        //     var modal = document.getElementById(id_modal);
 
-            // Prevent click event propagation inside modal
-            modal.addEventListener('click', function (event) {
-                event.stopPropagation();
-            });
+        //     // Prevent click event propagation inside modal
+        //     modal.addEventListener('click', function (event) {
+        //         event.stopPropagation();
+        //     });
+        // }
+        function closeModal(modalId) {
+            var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById(modalId));
+            modal.hide();
         }
     </script>
 </body>

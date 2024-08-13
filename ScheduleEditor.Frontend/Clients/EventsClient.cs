@@ -57,6 +57,7 @@ namespace ScheduleEditor.Frontend.Clients
         public List<ScheduleEvent> GetAllEvents()
             => _events;
 
+        // Change This Method If ScheduleEventViewModel Will Change Into Smth Different Than ScheduleEvent Class
         public ScheduleEvent? GetEvent(string id) 
             => GetEventById(id);
 

@@ -9,12 +9,14 @@
 }
 else
 {
-    <div class="modal @DarkModeCssClass" id="@GetCellId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+    //<button type="button" @onclick="SetModelNull" class="btn btn-secondary">Close</button>
+    <div class="modal @DarkModeCssClass" id="@GetModalId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">@title</h5>
-                    <button type="button" class="btn-close @DarkModeCssClass" data-bs-dismiss="modal" aria-label="Close" />
+                    <button type="button" @onclick="@((args) => {CloseModal(); SetModelNull(); })" class="btn-close @DarkModeCssClass" />
                 </div>
 
                 <div class="modal-body">
@@ -68,10 +70,9 @@ else
                         </div>
 
                         <div class="submit-group">
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" @onclick="@((args) => {CloseModal(); SetModelNull(); })" class="btn btn-secondary">Close</button>
                         </div>
-
                     </EditForm>
                 </div>
             </div>
@@ -95,7 +96,7 @@ else
     string title = string.Empty;
 
 
-    public static string GetCellId(string id) => $"modal-{id}";
+    public static string GetModalId(string id) => $"modal-{id}";
 
 
     protected override void OnParametersSet()
@@ -141,11 +142,32 @@ else
             EventsClient.UpdateEvent(ScheduleEventViewModel!);
         }
 
-
+        CloseModal();
         //string modalId = $"#modal-{ManageEvent.GetCellId(Id!)}";
 
         //await JSRuntime.InvokeVoidAsync("bootstrap.Modal.getOrCreateInstance", modalId);
         //await JSRuntime.InvokeVoidAsync("hide");
     }
 
+    private void CloseModal()
+    {
+        JSRuntime.InvokeVoidAsync("closeModal", GetModalId(Id!));
+    }
+
+    // is it really a bug or a feature?
+    // + WHEN EDITING AN EVENT IT GOES BLANK AFTER CANCEL
+    private void SetModelNull()
+    {
+        if (Id is not null && ScheduleEventViewModel != EventsClient.GetEvent(Id))
+        {
+            ScheduleEventViewModel = new()
+                {
+                    Id = this.Id,
+                    Room = string.Empty,
+                    Name = string.Empty,
+                    Lecturer = string.Empty
+                };
+        }
+        
+    }
 }
