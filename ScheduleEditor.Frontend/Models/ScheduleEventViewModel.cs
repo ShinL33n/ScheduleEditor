@@ -4,6 +4,7 @@ namespace ScheduleEditor.Frontend.Models
 {
     public class ScheduleEventViewModel
     {
+        public required string Id { get; set; }
         public required string Room { get; set; }
         public ClassType Type { get; set; }
         public required string Name { get; set; }

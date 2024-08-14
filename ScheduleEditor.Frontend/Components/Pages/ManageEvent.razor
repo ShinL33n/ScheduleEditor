@@ -9,8 +9,6 @@
 }
 else
 {
-
-    //<button type="button" @onclick="SetModelNull" class="btn btn-secondary">Close</button>
     <div class="modal @DarkModeCssClass" id="@GetModalId(Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -74,6 +72,59 @@ else
                             <button type="button" @onclick="@((args) => {CloseModal(); SetModelNull(); })" class="btn btn-secondary">Close</button>
                         </div>
                     </EditForm>
+                    <span>
+                    @* <EditForm EditContext="editContext" FormName="ManageEvent" OnValidSubmit="HandleSubmit">
+                        <DataAnnotationsValidator />
+
+                        <div class="form-group">
+                            <label for="room">Room:</label>
+                            <InputText id="room" Value="@ScheduleEventViewModel.Room" ValueExpression="() => ScheduleEventViewModel.Room"  ValueChanged="(v) => ScheduleEventViewModel.Room = v" class="form-control" placeholder="Enter room number" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Room" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <InputText id="name" Value="@ScheduleEventViewModel.Name" ValueExpression="() => ScheduleEventViewModel.Name" ValueChanged="(v) => ScheduleEventViewModel.Name = v" class="form-control" placeholder="Enter event name" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Name" />
+                        </div>
+
+                        <div class="form-group type-group">
+                            <label id="classType-label" for="classType">Type:</label>
+                            <InputRadioGroup Value="ScheduleEventViewModel.Type" ValueExpression="() => ScheduleEventViewModel.Type" ValueChanged="(ScheduleEvent.ClassType v) => ScheduleEventViewModel.Type = v" class="form-control" id="classType">
+                                @foreach (var type in Enum.GetValues<ScheduleEvent.ClassType>())
+                                {
+                                    string id = $"{Id.ToString()}-{@type.ToString().ToLower()}";
+                                    <div class="classTypeElement">
+                                        <InputRadio Value="type" id="@id" />
+                                        <label for="@id">@type</label>
+                                    </div>
+                                }
+                            </InputRadioGroup>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lecturer">Lecturer:</label>
+                            <InputText id="lecturer" Value="@ScheduleEventViewModel.Lecturer" ValueExpression="() => ScheduleEventViewModel.Lecturer"  ValueChanged="(v) => ScheduleEventViewModel.Lecturer = v" class="form-control" placeholder="Enter lecturer name" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.Lecturer" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalInformation">Additional Information:</label>
+                            <InputTextArea id="additionalInformation" Value="@ScheduleEventViewModel.AdditionalInformation" ValueExpression="() => ScheduleEventViewModel.AdditionalInformation" ValueChanged="(v) => ScheduleEventViewModel.AdditionalInformation = v" class="form-control" placeholder="Enter additional information" />
+                            <ValidationMessage For="() => ScheduleEventViewModel.AdditionalInformation" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="btn btn-outline-primary" for="addtionalEvents" title="Option comming soon!"> <span class="clr-secondary">⤹</span> More Events at This Time? <span class="clr-secondary">⤸</span></label>
+                            <InputCheckbox disabled id="addtionalEvents" class="btn-check form-control" Value="@ScheduleEventViewModel.AddtionalEvents" ValueExpression="() => ScheduleEventViewModel.AddtionalEvents" ValueChanged="(v) => ScheduleEventViewModel.AddtionalEvents   = v" />
+                        </div>
+
+                        <div class="submit-group">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" @onclick="@((args) => {CloseModal(); SetModelNull(); })" class="btn btn-secondary">Close</button>
+                        </div>
+                    </EditForm> *@
+                    </span>
                 </div>
             </div>
         </div>
@@ -89,12 +140,13 @@ else
 
     [SupplyParameterFromForm]
     //public ScheduleEventViewModel? ScheduleEventViewModel { get; set; }
-    public ScheduleEvent? ScheduleEventViewModel { get; set; }
+    public ScheduleEventViewModel? ScheduleEventViewModel { get; set; }
 
     private ScheduleEvent? scheduleEvent = null;
 
     string title = string.Empty;
 
+    //private EditContext? editContext;
 
     public static string GetModalId(string id) => $"modal-{id}";
 
@@ -119,9 +171,19 @@ else
             else
             {                          // -> When event already exists under specified id
                 title = $"Edit {scheduleEvent.Name}";
-                ScheduleEventViewModel = EventsClient.GetEvent(Id);
+                ScheduleEventViewModel = new()
+                {
+                        Id = scheduleEvent.Id,
+                        Room = scheduleEvent.Room,
+                        Name = scheduleEvent.Name,
+                        Lecturer = scheduleEvent.Lecturer
+                };
             }
+        
+            //editContext = new EditContext(ScheduleEventViewModel);
+
         }
+
     }
 
     // protected override void OnInitialized()
@@ -135,18 +197,17 @@ else
         if (scheduleEvent is null)
         {
             EventsClient.AddEvent(ScheduleEventViewModel!);
+            scheduleEvent = EventsClient.GetEvent(Id);
+            // how tf does scheduleEvent Updates even tho it isnt updated with scheduleEventViewModel data???
             title = $"Edit {ScheduleEventViewModel!.Name}";
         }
         else
         {
             EventsClient.UpdateEvent(ScheduleEventViewModel!);
+            // how tf does scheduleEvent Updates even tho it isnt updated with scheduleEventViewModel data???
         }
 
         CloseModal();
-        //string modalId = $"#modal-{ManageEvent.GetCellId(Id!)}";
-
-        //await JSRuntime.InvokeVoidAsync("bootstrap.Modal.getOrCreateInstance", modalId);
-        //await JSRuntime.InvokeVoidAsync("hide");
     }
 
     private void CloseModal()
@@ -155,10 +216,10 @@ else
     }
 
     // is it really a bug or a feature?
-    // + WHEN EDITING AN EVENT IT GOES BLANK AFTER CANCEL
     private void SetModelNull()
     {
-        if (Id is not null && ScheduleEventViewModel != EventsClient.GetEvent(Id))
+        // find better "edit mode detection"
+        if (Id is not null )//&& ScheduleEventViewModel != EventsClient.GetEvent(Id))
         {
             ScheduleEventViewModel = new()
                 {
@@ -168,6 +229,7 @@ else
                     Lecturer = string.Empty
                 };
         }
-        
     }
+
+    // ADD HELP METHOD TO CHECK IF USER ADDS OR EDITS AN EVENT
 }
